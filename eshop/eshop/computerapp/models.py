@@ -1,11 +1,11 @@
 from django.db import models
 
 # Create your models here.
-from django.utils.six import python_2_unicode_compatible
+# from django.utils.six import python_2_unicode_compatible
 from django.conf import settings
 
 #在每个类里面加一个python_2_unicode_compatible装饰器可以保证在python2下的兼容性
-@python_2_unicode_compatible
+# @python_2_unicode_compatible
 class Category(models.Model):
 
     """
@@ -18,7 +18,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-@python_2_unicode_compatible
+# @python_2_unicode_compatible
 class Manufacture(models.Model):
     """
     生产产商
@@ -34,7 +34,7 @@ class Manufacture(models.Model):
 
 
 
-@python_2_unicode_compatible
+# @python_2_unicode_compatible
 class Product(models.Model):
     """
     产品
@@ -52,7 +52,7 @@ class Product(models.Model):
     def __str__(self):
         return self.model
 
-@python_2_unicode_compatible
+# @python_2_unicode_compatible
 class DeliveryAddress(models.Model):
     """
     收货地址
@@ -67,7 +67,7 @@ class DeliveryAddress(models.Model):
     def __str__(self):
         return self.delivery_address
 
-@python_2_unicode_compatible
+# @python_2_unicode_compatible
 class UserProfile(models.Model):
     """
     用户信息
@@ -83,7 +83,7 @@ class UserProfile(models.Model):
                 blank=True, null= True)
     
 
-@python_2_unicode_compatible
+# @python_2_unicode_compatible
 class Order(models.Model):
     """
     order

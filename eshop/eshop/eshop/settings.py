@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'django_filters',
     'corsheaders',  #解决跨域的问题
     'computerapp.apps.ComputerappConfig',
 ]
@@ -123,6 +125,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
-
 CORS_ORIGIN_ALLOW_ALL = True    #允许所有的来源
+
+MEDIA_URL = '/media/'
+MIDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'eshop/media')
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 6,
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}

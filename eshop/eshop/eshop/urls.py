@@ -14,8 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.conf.urls import url, include
+from django.conf import settings
+from django.conf.urls.static import static
+from rest_framework.authtoken import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url(r'admin/', admin.site.urls),
+    url(r'computer/', include('computerapp.urls')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-token-auth/', views.obtain_auth_token),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, documnet_root = settings.MEDIA_ROOT)
+
